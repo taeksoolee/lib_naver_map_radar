@@ -32,3 +32,6 @@ window.ncpClientId='ncpClientId';
 |addDangerSectorRange|num|unfined|0~11 구역의 번호를 입력하여 해당 구역에 색 변경|
 |removeDangerSectorRange|num|unfined|0~11 구역의 번호를 입력하여 해당 구역에 색 변경|
 |setZoomAndCenter|map, position, zoom(default: 14)|unfined|원하는 위치로 이동 및 줌인|
+
+#### 미리보기
+![naver_map](https://user-images.githubusercontent.com/57004921/144730758-daedd6ed-6355-4904-989d-ae32ce4dd4b9.gif)
