@@ -94,7 +94,7 @@ const radarHtml = `
 `;
 
 // 
-function fn_generateRadarMarker(map, position) {
+function generateRadarMarker(map, position) {
   const marker = new naver.maps.Marker({
       position: new naver.maps.LatLng(position.latitude, position.longtitude),
       map,
@@ -110,12 +110,17 @@ function fn_generateRadarMarker(map, position) {
   return marker;
 }
 
-function fn_addDangerSecotrRange(num) {
+function addDangerSectorRange(num) {
   const $sector = $(`.sector-${num}`);
   $sector.classList.add('active');
 }
 
-function fn_removeDangerSectorRange(num) {
+function removeDangerSectorRange(num) {
   const $sector = $(`.sector-${num}`);
   $sector.classList.remove('active');
+}
+
+function setZoomAndCenter(map, position, zoom=14) {
+  map.setZoom(zoom);
+  map.setPosition(new naver.maps.LatLng(position.latitude, position.longtitude));
 }

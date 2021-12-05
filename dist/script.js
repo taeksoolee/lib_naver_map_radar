@@ -64,4 +64,4 @@
     <div class="sector sector-11"></div>
     <div class="sector sector-line"></div>
   </div>
-`;function fn_generateRadarMarker(e,r){return new naver.maps.Marker({position:new naver.maps.LatLng(r.latitude,r.longtitude),map:e,icon:{content:radarHtml},title:"radar-marker"})}function fn_addDangerSecotrRange(e){const r=$(".sector-"+e);r.classList.add("active")}function fn_removeDangerSectorRange(e){const r=$(".sector-"+e);r.classList.remove("active")}
+`;function generateRadarMarker(e,r){return new naver.maps.Marker({position:new naver.maps.LatLng(r.latitude,r.longtitude),map:e,icon:{content:radarHtml},title:"radar-marker"})}function addDangerSectorRange(e){const r=$(".sector-"+e);r.classList.add("active")}function removeDangerSectorRange(e){const r=$(".sector-"+e);r.classList.remove("active")}function setZoomAndCenter(e,r,t=14){e.setZoom(t),e.setPosition(new naver.maps.LatLng(r.latitude,r.longtitude))}

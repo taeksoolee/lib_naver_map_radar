@@ -74,12 +74,11 @@
       const mapHelper = new MapHelper(mapOptions);
       mapHelper.createGreenMarker();
 
-      const radarMarker = fn_generateRadarMarker(mapHelper.map, {latitude: 37.3595704, longtitude: 127.105399});
+      const radarMarker = generateRadarMarker(mapHelper.map, {latitude: 37.3595704, longtitude: 127.105399});
       window.radarMarker = radarMarker;
     }
 
     document.body.append(scriptTag);
-
   }
 </script>
 </body>
