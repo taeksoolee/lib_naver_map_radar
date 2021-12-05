@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>간단한 지도 표시하기</title>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/duotone.css" integrity="sha384-R3QzTxyukP03CMqKFe0ssp5wUvBPEyy9ZspCB+Y01fEjhMwcXixTyeot+S40+AjZ" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/fontawesome.css" integrity="sha384-eHoocPgXsiuZh+Yy6+7DsKAerLXyJmu2Hadh4QYyt+8v86geixVYwFqUvMU8X90l" crossorigin="anonymous"/>
+
+    <!-- <link rel="stylesheet" href="./radar.css"/> -->
+</head>
+<body>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  #map {
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .marker {
+    font-size: 3rem;
+  }
+
+  .color-green {
+    color: green;
+  }
+
+  .color-red {
+    color: red;
+  }
+
+  .marker-info-window {
+    position: relative;
+    top: -2rem;
+    left: -2rem;
+  }
+
+  .marker-info-content {
+    position: absolute;
+    min-width: 5rem;
+    padding: 0.5rem;
+    text-align: center;
+    background-color: white;
+    white-space: nowrap;
+  }
+</style>
+<div id="map"></div>
+
+<!-- <script src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=3hh9aag1xx"></script> -->
+<script src="./config.js"></script>
+<script src="./MapHelper.js"></script>
+<script src="./script.js"></script>
+<script>
+  {
+    const scriptTag = document.createElement('script');
+    scriptTag.src = `https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${window.ncpClientId}`;
+    scriptTag.onload = () => {
+      console.log('script loaded!');
+      const mapOptions = {
+        bounds: naver.maps.LatLngBounds.bounds(new naver.maps.LatLng(37.3585229, 127.1010728),
+                                                  new naver.maps.LatLng(37.3658036, 127.1222656)),
+        center: new naver.maps.LatLng(37.3595704, 127.105399),
+        mapTypeControl: false, // 지도, 위성 선택 버튼
+        zoom: 17,
+        mapType: naver.maps.MapTypeId.SATELLITE, 
+      };
+      
+      const mapHelper = new MapHelper(mapOptions);
+      mapHelper.createGreenMarker();
+
+      const radarMarker = fn_generateRadarMarker(mapHelper.map, {latitude: 37.3595704, longtitude: 127.105399});
+      window.radarMarker = radarMarker;
+    }
+
+    document.body.append(scriptTag);
+
+  }
+</script>
+</body>
+</html>
